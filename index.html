@@ -9,16 +9,11 @@
 <div id="root"></div>
 <script type="text/babel">
 	var Button = React.createClass({
-		getInitialState: function() {
-			return {counter: 0};
-		},
-		handleClick: function(){
-			this.setState({counter: this.state.counter + 1});
-		},
+		
 		render: function() {
 			return (
 				<div>
-					<button onClick={this.handleClick}>{this.state.counter}</button>
+					<button onClick={this.props.handleClick}>{+1}</button>
 				</div>
 				);
 		}
@@ -26,15 +21,27 @@
 	var Results = React.createClass({
 		render: function(){
 			return (
-				<div></div>
+				<div>{this.props.counter}</div>
 				);
 		}
 	});
 	var Main = React.createClass({
+		getInitialState: function() {
+			return {counter: 0};
+		},
+		handleClick: function(){
+			this.setState({counter: this.state.counter + 1});
+
+			// var component = this;
+			// setTimeout(function(){
+			// 	console.log(component.state.counter);
+			// },500);
+		},
 		render: function(){
 			return (
 				<div>
-					<Button />
+					<Button handleClick={this.handleClick} />
+					<Results counter={this.state.counter}/>
 				</div>
 				);
 		}
