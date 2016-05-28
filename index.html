@@ -30,7 +30,17 @@
 				);
 		}
 	});
-	ReactDOM.render(<Button />,document.getElementById('root'));
+	var Main = React.createClass({
+		render: function(){
+			return (
+				<div>
+					<Button />
+				</div>
+				);
+		}
+	});
+
+	ReactDOM.render(<Main />,document.getElementById('root'));
 
 
 
